@@ -19,5 +19,7 @@ jobs:
           cache: maven
       - name: check folder
         run: ls -la
+      - name: Go to spring folder
+        run: cd spring-demo
       - name: Build with Maven
         run: mvn -B package --file pom.xml
