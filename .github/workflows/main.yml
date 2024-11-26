@@ -24,4 +24,4 @@ jobs:
       - name: check folder
         run: ls -la
       - name: Build with Maven
-        run: cd spring-demo && cd Spring demo && ls -la && mvn -B package --file pom.xml
+        run: cd spring-demo && cd Spring\ demo/&& ls -la && mvn -B package --file pom.xml
