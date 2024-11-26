@@ -17,8 +17,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven
+      - name: Run Tests
         run: |
           cd spring-demo/Spring\ demo/ 
-          ls -la
           mvn clean test
