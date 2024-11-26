@@ -21,4 +21,4 @@ jobs:
         run: |
           cd spring-demo/Spring\ demo/ 
           ls -la
-          mvn verify
+          mvn clean test
