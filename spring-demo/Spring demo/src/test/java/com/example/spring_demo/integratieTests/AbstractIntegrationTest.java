@@ -16,20 +16,17 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @Testcontainers
 public class AbstractIntegrationTest {
 
+    @Autowired
+    protected MockMvc mockMvc;
+
     @Container
     @ServiceConnection
     static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17-alpine");
 
-    @Autowired
-    protected MockMvc mockMvc;
-
     @BeforeAll
-    public static void init() {
-        postgres.start();
-    }
+    public static void init() { postgres.start(); }
 
     @AfterAll
-    public static void destroy() {
-        postgres.stop();
-    }
+    public static void destroy() { postgres.stop(); }
+
 }

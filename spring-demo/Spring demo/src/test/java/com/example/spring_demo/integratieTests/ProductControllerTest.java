@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-class ProductControllerIT extends AbstractIntegrationTest {
+class ProductControllerTest extends AbstractIntegrationTest {
 
     private final ProductRepository productRepository;
 
