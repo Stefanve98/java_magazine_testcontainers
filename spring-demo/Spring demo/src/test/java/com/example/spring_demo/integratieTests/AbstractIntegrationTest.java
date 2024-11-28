@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.kafka.KafkaContainer;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
@@ -22,4 +23,13 @@ public class AbstractIntegrationTest {
     @Container
     @ServiceConnection
     static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17-alpine");
+
+    @Container
+    static KafkaContainer kafka = new KafkaContainer("apache/kafka")
+            .withEnv("KAFKA_AUTO_CREATE_TOPICS_ENABLE", "true");
+
+    @BeforeAll
+    public static void init() {
+        System.setProperty("spring.kafka.bootstrap-servers", kafka.getBootstrapServers());
+    }
 }
