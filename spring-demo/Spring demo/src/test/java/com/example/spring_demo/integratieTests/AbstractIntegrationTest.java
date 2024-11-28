@@ -22,11 +22,4 @@ public class AbstractIntegrationTest {
     @Container
     @ServiceConnection
     static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17-alpine");
-
-    @BeforeAll
-    public static void init() { postgres.start(); }
-
-    @AfterAll
-    public static void destroy() { postgres.stop(); }
-
 }
