@@ -2,6 +2,7 @@ package com.example.spring_demo.service;
 
 import com.example.spring_demo.controller.dto.ProductResponseDto;
 import com.example.spring_demo.controller.dto.SaveProductDto;
+import com.example.spring_demo.controller.exceptions.NonExistingProduct;
 import com.example.spring_demo.domain.Product;
 import com.example.spring_demo.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +10,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,22 +25,21 @@ public class ProductService {
                 .toList();
     }
 
-    public Optional<ProductResponseDto> findById(Long id) {
+    public ProductResponseDto findById(Long id) {
         return productRepository.findById(id)
-                .map(product -> modelMapper.map(product, ProductResponseDto.class));
+                .map(product -> modelMapper.map(product, ProductResponseDto.class))
+                .orElseThrow(NonExistingProduct::new);
     }
 
-    public Optional<ProductResponseDto> update(Long id, SaveProductDto productDto) {
-        Product product = modelMapper.map(productDto, Product.class);
-        product.setId(id);
+    public ProductResponseDto update(Long id, SaveProductDto productDto) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(NonExistingProduct::new);
 
-        Optional<Product> foundProduct = productRepository.findById(id);
-        if (foundProduct.isEmpty()) {
-            return Optional.empty();
-        }
+        Product updatingProduct = modelMapper.map(productDto, Product.class);
+        updatingProduct.setId(product.getId());
+        updatingProduct = productRepository.save(updatingProduct);
 
-        product = productRepository.save(product);
-        return Optional.of(modelMapper.map(product, ProductResponseDto.class));
+        return modelMapper.map(updatingProduct, ProductResponseDto.class);
     }
 
     public ProductResponseDto save(SaveProductDto productDto) {
