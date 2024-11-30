@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: demo_username
+      POSTGRES_PASSWORD: demo_password
+    ports:
+      - "5432:5432"

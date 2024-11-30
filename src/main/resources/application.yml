@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Spring demo
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo
+    driverClassName: org.postgresql.Driver
+    username: demo_username
+    password: demo_password
+
+  jpa:
+    hibernate:
+      ddl-auto: update

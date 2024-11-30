@@ -1,0 +1,10 @@
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/SpringDemoApplication.java
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/controller/ProductController.java
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/controller/dto/ProductResponseDto.java
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/controller/dto/SaveProductDto.java
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/controller/exceptions/NonExistingProduct.java
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/domain/Product.java
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/domain/listeners/ProductListener.java
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/kafka/KafkaProducer.java
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/repository/ProductRepository.java
+/Users/stefanvanechtelt/Documents/projects/java_magazine_testcontainers/spring-demo/Spring demo/src/main/java/com/example/spring_demo/service/ProductService.java
