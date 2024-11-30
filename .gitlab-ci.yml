@@ -9,5 +9,4 @@ image: maven:latest
 test-coverage:
   stage: test
   script:
-    - cd spring-demo/Spring\ demo/
     - mvn clean verify
