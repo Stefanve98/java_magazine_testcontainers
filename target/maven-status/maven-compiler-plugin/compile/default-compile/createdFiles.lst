@@ -1,8 +1,0 @@
-com/example/spring_demo/repository/ProductRepository.class
-com/example/spring_demo/domain/Product$ProductBuilder.class
-com/example/spring_demo/controller/dto/SaveProductDto.class
-com/example/spring_demo/domain/Product.class
-com/example/spring_demo/service/ProductService.class
-com/example/spring_demo/SpringDemoApplication.class
-com/example/spring_demo/controller/ProductController.class
-com/example/spring_demo/controller/dto/ProductResponseDto.class

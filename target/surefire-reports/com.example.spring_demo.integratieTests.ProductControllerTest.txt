@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.spring_demo.integratieTests.ProductControllerTest
--------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.475 s -- in com.example.spring_demo.integratieTests.ProductControllerTest
