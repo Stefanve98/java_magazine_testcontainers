@@ -8,6 +8,9 @@ spring:
     username: demo_username
     password: demo_password
 
+  kafka:
+    bootstrap-servers: localhost:9092
+
   jpa:
     hibernate:
       ddl-auto: update

@@ -5,6 +5,7 @@ import com.example.spring_demo.domain.Product;
 import com.example.spring_demo.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -12,7 +13,9 @@ import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -21,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-class ProductControllerTest extends AbstractIntegrationTest {
+class ProductDatabaseIntegrationTest extends AbstractIntegrationTest {
 
     private final ProductRepository productRepository;
 
@@ -79,7 +82,8 @@ class ProductControllerTest extends AbstractIntegrationTest {
         String stringResponse = response.getResponse().getContentAsString();
         Product savedProduct = objectMapper.readValue(stringResponse, Product.class);
 
-        assertNotNull(savedProduct.getId());
+        Assertions.assertNotNull(savedProduct.getId());
+        Assertions.assertNotNull(productRepository.findById(savedProduct.getId()));
     }
 
     @Test
@@ -97,6 +101,11 @@ class ProductControllerTest extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$.price").value(updateProduct.getPrice()))
                 .andExpect(jsonPath("$.description").value(updateProduct.getDescription()))
                 .andReturn();
+
+        Assertions.assertEquals(1, productRepository.count());
+
+        Product productDB = productRepository.findById(savedProduct.getId()).get();
+        assertEquals(updateProduct.getName(), productDB.getName());
     }
 
     @Test
@@ -113,7 +122,9 @@ class ProductControllerTest extends AbstractIntegrationTest {
         Product product = Product.builder().name("test").price(2.0).description("description_1").build();
         Product savedProduct = productRepository.save(product);
 
-        mockMvc.perform(get("/product/" + savedProduct.getId()).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(delete("/product/" + savedProduct.getId()).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
+
+        Assertions.assertEquals(0, productRepository.count());
     }
 }
