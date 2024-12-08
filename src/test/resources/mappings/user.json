@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/user/1"
+  },
+  "response": {
+    "status": 200,
+    "body": "{\"id\": 1, \"name\": \"Test user\",\"role\": \"USER\",\"description\": \"This is a test user\"}",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

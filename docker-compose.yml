@@ -13,7 +13,7 @@ services:
       - "5432:5432"
 
   kafka:
-    image: apache/kafka:3.8.1
+    image: apache/kafka:3.9.0
     container_name: kafka
     ports:
       - "9092:9092"
@@ -27,3 +27,10 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_KRAFT_CLUSTER_ID: kraft-cluster-1
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  wiremock:
+    image: wiremock/wiremock:2.35.0
+    ports:
+      - 8081:8080
+    volumes:
+      - ./src/test/resources/mappings:/home/wiremock/mappings

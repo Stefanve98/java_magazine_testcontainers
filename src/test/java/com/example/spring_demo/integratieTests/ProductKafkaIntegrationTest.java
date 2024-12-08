@@ -53,9 +53,9 @@ class ProductKafkaIntegrationTest extends AbstractIntegrationTest {
         Product product = Product.builder().name("test_1").price(2.0).description("description_1").build();
         productRepository.save(product);
 
-        ConsumerRecord<String, String> singleRecord = KafkaTestUtils.getSingleRecord(consumer, TOPIC);
+        ConsumerRecords<String, String> records = KafkaTestUtils.getRecords(consumer);
+        String value = getLastRecord(records);
 
-        String value = singleRecord.value();
         ProductKafkaMessage message = objectMapper.readValue(value, ProductKafkaMessage.class);
 
         Assertions.assertEquals(ProductKafkaMessage.ChangeStatus.SAVE, message.status());
