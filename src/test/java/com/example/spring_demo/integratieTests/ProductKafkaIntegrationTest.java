@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-class ProductKafkaIntegrationTest extends IntegrationTest {
+class ProductKafkaIntegrationTest extends AbstractIntegrationTest {
 
     private final ObjectMapper objectMapper;
     private final ProductRepository productRepository;

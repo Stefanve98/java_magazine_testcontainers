@@ -13,11 +13,11 @@ services:
       - "5432:5432"
 
   kafka:
-    image: apache/kafka:3.9.0
+    image: apache/kafka:3.8.1
     container_name: kafka
     ports:
-      - "9092:9092" # For client connections
-      - "9093:9093" # For controller communication
+      - "9092:9092"
+      - "9093:9093"
     environment:
       KAFKA_PROCESS_ROLES: broker,controller
       KAFKA_NODE_ID: 1
