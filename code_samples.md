@@ -26,17 +26,24 @@ public class IntegrationTest {
         <artifactId>spring-boot-testcontainers</artifactId>
         <scope>test</scope>
     </dependency>
-
     <dependency>
         <groupId>org.testcontainers</groupId>
         <artifactId>junit-jupiter</artifactId>
         <scope>test</scope>
     </dependency>
-
     <dependency>
         <groupId>org.testcontainers</groupId>
         <artifactId>postgresql</artifactId>
         <scope>test</scope>
     </dependency>
+```
+
+``` yaml
+services:
+  - name: docker:dind
+    command: ["--tls=false"]
+variables:
+  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_TLS_CERTDIR: ""
 ```
 
