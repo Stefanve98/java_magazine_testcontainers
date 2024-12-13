@@ -5,7 +5,8 @@
 public class IntegrationTest {  
   
     @Container  
-    @ServiceConnection    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17-alpine");  
+    @ServiceConnection    
+    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17-alpine");  
   
     @Container  
     static KafkaContainer kafka = new KafkaContainer("apache/kafka:3.8.1")  
@@ -20,6 +21,22 @@ public class IntegrationTest {
 
 
 ``` xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-testcontainers</artifactId>
+        <scope>test</scope>
+    </dependency>
 
+    <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>postgresql</artifactId>
+        <scope>test</scope>
+    </dependency>
 ```
 
